@@ -215,7 +215,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import {
   Disclosure,
   DisclosureButton,
@@ -227,6 +227,7 @@ import {
 } from '@headlessui/vue'
 import { MenuIcon, XIcon } from '@heroicons/vue/outline'
 
+const profile = ['Your Profile', 'Settings', 'Sign out']
 const navigation = ['Dashboard', 'Database']
 
 export default defineComponent({
@@ -242,8 +243,12 @@ export default defineComponent({
     XIcon,
   },
   setup() {
+    const open = ref<boolean>(false)
+
     return {
       navigation,
+      profile,
+      open,
     }
   },
 })
