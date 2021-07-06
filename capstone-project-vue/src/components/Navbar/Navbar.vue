@@ -1,5 +1,5 @@
 <template>
-  <Disclosure as="nav" class="bg-gray-800" v-slot="{ open }">
+  <Disclosure as="nav" class="bg-gray-800">
     <div class="px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
@@ -10,11 +10,9 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <template v-for="(item, itemIdx) in navigation" :key="item">
-                <template v-if="itemIdx === 0">
-                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a
-                    href="#"
+              <template v-for="item in navigation" :key="item">
+                <template v-if="currentRoute === item">
+                  <div
                     class="
                       bg-gray-900
                       text-white
@@ -23,13 +21,15 @@
                       rounded-md
                       text-sm
                       font-medium
+                      cursor-pointer
                     "
-                    >{{ item }}</a
+                    @click="changeRoute(item)"
                   >
+                    {{ item }}
+                  </div>
                 </template>
-                <a
+                <div
                   v-else
-                  href="#"
                   class="
                     text-gray-300
                     hover:bg-gray-700 hover:text-white
@@ -38,16 +38,18 @@
                     rounded-md
                     text-sm
                     font-medium
+                    cursor-pointer
                   "
-                  >{{ item }}</a
+                  @click="changeRoute(item)"
                 >
+                  {{ item }}
+                </div>
               </template>
             </div>
           </div>
         </div>
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
-            <!-- Profile dropdown -->
             <Menu as="div" class="ml-3 relative">
               <div>
                 <MenuButton
@@ -111,121 +113,15 @@
             </Menu>
           </div>
         </div>
-        <div class="-mr-2 flex md:hidden">
-          <!-- Mobile menu button -->
-          <DisclosureButton
-            class="
-              bg-gray-800
-              inline-flex
-              items-center
-              justify-center
-              p-2
-              rounded-md
-              text-gray-400
-              hover:text-white hover:bg-gray-700
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-offset-gray-800
-              focus:ring-white
-            "
-          >
-            <span class="sr-only">Open main menu</span>
-            <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-            <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
-          </DisclosureButton>
-        </div>
       </div>
     </div>
-
-    <DisclosurePanel class="md:hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <template v-for="(item, itemIdx) in navigation" :key="item">
-          <template v-if="itemIdx === 0">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a
-              href="#"
-              class="
-                bg-gray-900
-                text-white
-                block
-                px-3
-                py-2
-                rounded-md
-                text-base
-                font-medium
-              "
-              >{{ item }}</a
-            >
-          </template>
-          <a
-            v-else
-            href="#"
-            class="
-              text-gray-300
-              hover:bg-gray-700 hover:text-white
-              block
-              px-3
-              py-2
-              rounded-md
-              text-base
-              font-medium
-            "
-            >{{ item }}</a
-          >
-        </template>
-      </div>
-      <div class="pt-4 pb-3 border-t border-gray-700">
-        <div class="flex items-center px-5">
-          <div class="flex-shrink-0">
-            <img
-              class="h-10 w-10 rounded-full"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
-            />
-          </div>
-          <div class="ml-3">
-            <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-            <div class="text-sm font-medium leading-none text-gray-400">
-              tom@example.com
-            </div>
-          </div>
-        </div>
-        <div class="mt-3 px-2 space-y-1">
-          <a
-            v-for="item in profile"
-            :key="item"
-            href="#"
-            class="
-              block
-              px-3
-              py-2
-              rounded-md
-              text-base
-              font-medium
-              text-gray-400
-              hover:text-white hover:bg-gray-700
-            "
-            >{{ item }}</a
-          >
-        </div>
-      </div>
-    </DisclosurePanel>
   </Disclosure>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-} from '@headlessui/vue'
-import { MenuIcon, XIcon } from '@heroicons/vue/outline'
+import { defineComponent, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 const profile = ['Your Profile', 'Settings', 'Sign out']
 const navigation = ['Dashboard', 'Database']
@@ -233,22 +129,24 @@ const navigation = ['Dashboard', 'Database']
 export default defineComponent({
   components: {
     Disclosure,
-    DisclosureButton,
-    DisclosurePanel,
     Menu,
     MenuButton,
     MenuItem,
     MenuItems,
-    MenuIcon,
-    XIcon,
   },
   setup() {
-    const open = ref<boolean>(false)
+    const router = useRouter()
+    const route = useRoute()
 
+    const currentRoute = computed(() => route.name)
+    const changeRoute = (name: string): void => {
+      router.push({ name: name })
+    }
     return {
+      currentRoute,
+      changeRoute,
       navigation,
       profile,
-      open,
     }
   },
 })

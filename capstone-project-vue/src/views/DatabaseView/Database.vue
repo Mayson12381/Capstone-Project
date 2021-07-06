@@ -1,16 +1,9 @@
-<template>
-  <Navbar />
-  <router-view />
-</template>
+<template>database</template>
 
 <script lang="ts">
-import Navbar from '@/components/Navbar'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  components: {
-    Navbar,
-  },
   setup() {
     return {}
   },
