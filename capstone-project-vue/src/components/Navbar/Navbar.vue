@@ -49,7 +49,8 @@
           </div>
         </div>
         <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
+          <div class="flex items-center">
+            <CompanionStatus :status="companionStatus" />
             <Menu as="div" class="ml-3 relative">
               <div>
                 <MenuButton
@@ -119,12 +120,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { defineComponent } from 'vue'
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-
-const profile = ['Your Profile', 'Settings', 'Sign out']
-const navigation = ['Dashboard', 'Database']
+import CompanionStatus from './CompanionStatus'
+import { useStore } from 'vuex'
+import { key } from '@/store'
 
 export default defineComponent({
   components: {
@@ -133,21 +133,32 @@ export default defineComponent({
     MenuButton,
     MenuItem,
     MenuItems,
+    CompanionStatus,
   },
-  setup() {
-    const router = useRouter()
-    const route = useRoute()
-
-    const currentRoute = computed(() => route.name)
-    const changeRoute = (name: string): void => {
-      router.push({ name: name })
-    }
+  data() {
     return {
-      currentRoute,
-      changeRoute,
-      navigation,
-      profile,
+      profile: ['Your Profile', 'Settings', 'Sign out'],
+      navigation: ['Dashboard', 'Database'],
     }
+  },
+  cron: {
+    time: 5000,
+    method: 'fetchCompanionStatus',
+    autoStart: true,
+  },
+  computed: {
+    currentRoute() {
+      return this.$route.name
+    },
+    companionStatus() {
+      const store = useStore(key)
+      return store.getters.companionStatus
+    },
+  },
+  methods: {
+    fetchCompanionStatus() {
+      this.$store.dispatch('fetchCompanionStatus')
+    },
   },
 })
 </script>

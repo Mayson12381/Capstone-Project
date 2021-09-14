@@ -1,0 +1,44 @@
+item {
+	id: 1
+	name: 'AK-47'
+}
+item {
+	id: 2
+	name: 'M4'
+}
+item {
+	id: 3
+	name: 'AWP'
+}
+item {
+	id: 4
+	name: 'Dead'
+}
+item {
+	id: 5
+	name: 'Flash'
+}
+item {
+	id: 6
+	name: 'Smoke'
+}
+item {
+	id: 7
+	name: 'Molotov'
+}
+item {
+	id: 8
+	name: 'HE'
+}
+item {
+	id: 9
+	name: 'Deagle'
+}
+item {
+	id: 10
+	name: 'Kevlar'
+}
+item {
+	id: 11
+	name: 'Helmet'
+}
