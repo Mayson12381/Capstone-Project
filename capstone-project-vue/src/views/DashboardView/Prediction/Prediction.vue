@@ -31,20 +31,12 @@
                 </div>
                 <div class="mt-4 sm:mt-0 sm:col-span-1">
                   <div class="max-w-lg space-y-4">
-                    <BaseCheckbox
-                      title="A Site"
-                      startSelected
-                      @on-click="ASite = $event"
-                    />
+                    <BaseCheckbox title="A Site" startSelected @update="ASite = $event" />
                   </div>
                 </div>
                 <div class="mt-4 sm:mt-0 sm:col-span-1">
                   <div class="max-w-lg space-y-4">
-                    <BaseCheckbox
-                      title="B Site"
-                      startSelected
-                      @on-click="BSite = $event"
-                    />
+                    <BaseCheckbox title="B Site" startSelected @update="BSite = $event" />
                   </div>
                 </div>
               </div>
@@ -70,7 +62,7 @@
                   <div class="max-w-lg space-y-4">
                     <BaseCheckbox
                       title="Fast Evaluation"
-                      @on-click="fastEvaluation = $event"
+                      @update="fastEvaluation = $event"
                     />
                   </div>
                 </div>
@@ -79,7 +71,7 @@
                     <BaseCheckbox
                       title="Save Result"
                       startSelected
-                      @on-click="saveResult = $event"
+                      @update="saveResult = $event"
                     />
                   </div>
                 </div>
