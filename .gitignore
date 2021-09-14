@@ -90,3 +90,5 @@ typings/
 CapstoneProject.code-workspace
 
 .DS_Store
+
+capstone-project-python/__pycache__/
