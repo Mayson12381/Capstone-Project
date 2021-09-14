@@ -18,7 +18,7 @@
         variant == 'primary',
       'bg-white border-gray-300 text-gray-700 hover:bg-gray-50': variant == 'secondary',
     }"
-    @click="$emit('on-click')"
+    @click="$emit('click')"
   >
     {{ title }}
   </button>
