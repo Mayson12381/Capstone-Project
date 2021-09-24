@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import BaseModal from './BaseModal.vue'
 
-// Due to transitions in component, tests dont work here
+// Due to transitions in component, tests dont work fully here
 
 describe('BaseModal', () => {
   it('renders title prop', async () => {

@@ -96,7 +96,7 @@
                 </div>
                 <div class="mt-4 sm:mt-0 sm:col-span-1">
                   <div class="max-w-lg space-y-4">
-                    <BaseSelect />
+                    <BaseSelect @test="console.log('here')" />
                   </div>
                 </div>
               </div>
