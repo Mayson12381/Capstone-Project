@@ -8,45 +8,11 @@
               CStrategy.ai
             </h2>
           </div>
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-4">
-              <template v-for="item in navigation" :key="item">
-                <template v-if="currentRoute === item">
-                  <div
-                    class="
-                      bg-gray-900
-                      text-white
-                      px-3
-                      py-2
-                      rounded-md
-                      text-sm
-                      font-medium
-                      cursor-pointer
-                    "
-                    @click="changeRoute(item)"
-                  >
-                    {{ item }}
-                  </div>
-                </template>
-                <div
-                  v-else
-                  class="
-                    text-gray-300
-                    hover:bg-gray-700 hover:text-white
-                    px-3
-                    py-2
-                    rounded-md
-                    text-sm
-                    font-medium
-                    cursor-pointer
-                  "
-                  @click="changeRoute(item)"
-                >
-                  {{ item }}
-                </div>
-              </template>
-            </div>
-          </div>
+          <Tabs
+            :currenteRoute="currenteRoute"
+            :navigationItems="navigationItems"
+            @click-route="changeRoute"
+          />
         </div>
         <div class="hidden md:block">
           <div class="flex items-center">
@@ -125,6 +91,7 @@ import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/v
 import CompanionStatus from './CompanionStatus'
 import { useStore } from 'vuex'
 import { key } from '@/store'
+import Tabs from './Tabs/Tabs.vue'
 
 export default defineComponent({
   components: {
@@ -134,11 +101,12 @@ export default defineComponent({
     MenuItem,
     MenuItems,
     CompanionStatus,
+    Tabs,
   },
   data() {
     return {
       profile: ['Your Profile', 'Settings', 'Sign out'],
-      navigation: ['Dashboard', 'Database'],
+      navigationItems: ['Dashboard', 'Database'],
     }
   },
   cron: {
@@ -158,6 +126,9 @@ export default defineComponent({
   methods: {
     fetchCompanionStatus() {
       this.$store.dispatch('fetchCompanionStatus')
+    },
+    changeRoute(routeName) {
+      this.$router.push({ name: routeName })
     },
   },
 })
