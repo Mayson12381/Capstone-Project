@@ -8,5 +8,6 @@ module.exports = {
     'src/**/*.{js,vue,ts}',
     '!src/main.ts',
     '!src/components/**/index.ts',
+    '!src/components/**/App*.vue',
   ],
 }
