@@ -16,3 +16,15 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss">
+html,
+body {
+  height: 100%;
+}
+#app {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+</style>

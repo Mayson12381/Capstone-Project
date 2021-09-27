@@ -29,9 +29,9 @@
       </div>
     </div>
   </header>
-  <main>
-    <div class="flex">
-      <div class="w-1/2 border-r border-gray-300">
+  <main class="flex flex-col flex-auto">
+    <div class="flex flex-auto">
+      <div class="w-1/2 border-r border-gray-300 flex flex-col">
         <Prediction
           :companionStatus="companionStatus"
           @get-data="onClickGetData"

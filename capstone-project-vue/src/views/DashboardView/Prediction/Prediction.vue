@@ -1,7 +1,7 @@
 <template>
   <PlayerTable />
-  <form class="space-y-8 divide-y divide-gray-200 p-6">
-    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+  <form class="flex flex-col flex-auto space-y-8 divide-y divide-gray-200 p-6">
+    <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5 flex-auto">
       <div class="divide-y divide-gray-200 space-y-6 sm:space-y-5">
         <div>
           <h3 class="text-lg leading-6 font-medium text-gray-900">
