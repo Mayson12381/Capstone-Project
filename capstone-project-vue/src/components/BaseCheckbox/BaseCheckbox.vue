@@ -12,7 +12,7 @@
         />
       </div>
       <div class="ml-3 text-sm">
-        <label for="candidates" class="font-medium text-gray-700">{{ this.title }}</label>
+        <label class="font-medium text-gray-700">{{ this.title }}</label>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@ export default defineComponent({
   },
   methods: {
     onChange() {
-      this.$emit('on-click', this.checked)
+      this.$emit('update', this.checked)
     },
   },
 })

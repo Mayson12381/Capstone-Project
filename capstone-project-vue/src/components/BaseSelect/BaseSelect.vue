@@ -1,5 +1,5 @@
 <template>
-  <Listbox as="div" v-model="selected">
+  <Listbox as="div" value="options[selectedIndex]" @input="$emit('test', $event)">
     <ListboxLabel v-if="title" class="block text-sm font-medium text-gray-700">
       {{ title }}
     </ListboxLabel>
@@ -21,7 +21,7 @@
           sm:text-sm
         "
       >
-        <span class="block truncate">{{ selected.name }}</span>
+        <span class="block truncate">{{ options[selectedIndex].name }}</span>
         <span
           class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
         >
@@ -54,10 +54,10 @@
         >
           <ListboxOption
             as="template"
-            v-for="map in maps"
-            :key="map.id"
-            :value="map"
-            v-slot="{ active, selected }"
+            v-for="option in options"
+            :key="option.id"
+            :value="option"
+            v-slot="{ active }"
           >
             <li
               :class="[
@@ -66,13 +66,16 @@
               ]"
             >
               <span
-                :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']"
+                :class="[
+                  options[selectedIndex] === option ? 'font-semibold' : 'font-normal',
+                  'block truncate',
+                ]"
               >
-                {{ map.name }}
+                {{ option.name }}
               </span>
 
               <span
-                v-if="selected"
+                v-if="options[selectedIndex] === option"
                 :class="[
                   active ? 'text-white' : 'text-indigo-600',
                   'absolute inset-y-0 right-0 flex items-center pr-4',
@@ -88,8 +91,9 @@
   </Listbox>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
+
 import {
   Listbox,
   ListboxButton,
@@ -99,9 +103,12 @@ import {
 } from '@headlessui/vue'
 import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
 
-const maps = [{ id: 1, name: 'Inferno' }]
+interface OptionsObject {
+  id: number
+  name: string
+}
 
-export default {
+export default defineComponent({
   components: {
     Listbox,
     ListboxButton,
@@ -116,14 +123,17 @@ export default {
       required: false,
       default: '',
     },
+    options: {
+      required: false,
+      default: (): Array<OptionsObject> => [
+        { id: 0, name: 'Inferno' },
+        { id: 1, name: 'Overpass' },
+      ],
+    },
+    selectedIndex: {
+      required: false,
+      default: 0,
+    },
   },
-  setup() {
-    const selected = ref(maps[0])
-
-    return {
-      maps,
-      selected,
-    }
-  },
-}
+})
 </script>

@@ -51,7 +51,7 @@ import PastResults from './PastResults'
 import Prediction from './Prediction'
 import firebase from 'firebase'
 import BaseModal from '@/components/BaseModal'
-import PredictionStats from '@/components/PredictionStats/PredictionStats.vue'
+import PredictionStats from './PredictionStats'
 
 export default defineComponent({
   components: {
