@@ -87,7 +87,7 @@
             >{{ result.prediction.A }}%</span
           >, B -
           <span :class="result.prediction.B < 50 ? 'text-red-400' : 'text-green-600'"
-            >{{ result.prediction.A }}%</span
+            >{{ result.prediction.B }}%</span
           >
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
