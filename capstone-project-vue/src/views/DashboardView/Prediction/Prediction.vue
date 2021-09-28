@@ -107,8 +107,8 @@
     </div>
     <div class="pt-5">
       <div class="flex justify-end">
-        <BaseButton title="Get Data" @click="$emit('get-data')" variant="secondary" />
-        <BaseButton title="Predict" @click="$emit('predict')" variant="primary" />
+        <BaseButton title="Get Data" @on-click="$emit('get-data')" variant="secondary" />
+        <BaseButton title="Predict" @on-click="$emit('predict')" variant="primary" />
       </div>
     </div>
   </form>

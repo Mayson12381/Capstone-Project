@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import PredictionsTable from './PlayerTable/PredictionsTable.vue'
+import PredictionsTable from './PredictionsTable'
 
 export default defineComponent({
   components: { PredictionsTable },
