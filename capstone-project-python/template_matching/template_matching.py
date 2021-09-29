@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-from data_detection.image_processor import getPlayerImagesRightSeperated, getPlayerImagesLeftSeperated
+from data_detection.image_processor import get_player_images_right, get_player_images_left
 import config
 import matplotlib.pyplot as plt
 
@@ -153,9 +153,9 @@ def is_player_dead(img):
 
     return maxVal if maxVal >= threshold else 0
 
-getSingleImages = getPlayerImagesLeftSeperated if config.is_team_left else getPlayerImagesRightSeperated
-player1, player2, player3, player4, player5 = getPlayerImagesLeftSeperated(
-    '../helper_modules/test_images/test-screen_7.jpg', config.PLAYER_X_OFFSET, config.PLAYER_HEIGTH,
+getSingleImages = get_player_images_left if config.is_team_left else get_player_images_right
+player1, player2, player3, player4, player5 = get_player_images_left(
+    '../helper_modules/test_images/test-screen_7.jpg', config.PLAYER_X_OFFSET, config.PLAYER_HEIGHT,
     config.PLAYER_Y_OFFSET)
 
 # for index, player in enumerate([player1, player2, player3, player4, player5]):

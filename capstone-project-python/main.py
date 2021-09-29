@@ -7,10 +7,10 @@ from data_detection.detections import (load_model, get_team_data_from_image,
                                        show_image_with_detections)
 
 import config
-from data_detection.image_processor import (getPlayerImagesLeftFull,
-                                            getPlayerImagesLeftSeperated,
-                                            getPlayerImagesRightFull,
-                                            getPlayerImagesRightSeperated)
+from data_detection.image_processor import (get_team_image_left,
+                                            get_player_images_left,
+                                            get_team_image_right,
+                                            get_player_images_right)
 from firebase_helpers.firebase_functions import (init_firebase,
                                                  update_game_data,
                                                  update_last_online)
@@ -29,8 +29,8 @@ def main_loop():
                 config.is_game_data_requested = False
                 player_data = get_team_data_from_image(
                     cv2.imread(config.TEST_IMAGE_PATH),
-                    getPlayerImagesLeftSeperated
-                    if config.is_team_left else getPlayerImagesRightSeperated)
+                    get_player_images_left
+                    if config.is_team_left else get_player_images_right)
                 update_game_data(player_data)
             update_last_online()
 
@@ -42,10 +42,10 @@ def init_gui():
     """
     root_frame = tk.Tk()
     MainFrame(parent=root_frame,
-              getPlayersFull=getPlayerImagesLeftFull
-              if config.is_team_left else getPlayerImagesRightFull,
-              getPlayersSingle=getPlayerImagesLeftSeperated
-              if config.is_team_left else getPlayerImagesRightSeperated,
+              getPlayersFull=get_team_image_left
+              if config.is_team_left else get_team_image_right,
+              getPlayersSingle=get_player_images_left
+              if config.is_team_left else get_player_images_right,
               show_image_with_detections=show_image_with_detections).grid(
                   sticky="ew")
 
