@@ -48,7 +48,7 @@ def show_image_with_detections(full_img: List,
         full_img, get_players_seperated_func)
 
     team_img = get_team_img_func(full_img, config.PLAYER_X_OFFSET,
-                                 config.PLAYER_HEIGTH, config.PLAYER_Y_OFFSET)
+                                 config.PLAYER_HEIGHT, config.PLAYER_Y_OFFSET)
     team_img_with_detections = _apply_detections_to_team_image(
         team_img, team_detections, detection_categories)
     cv2.imshow("Detection", team_img_with_detections)
@@ -66,10 +66,9 @@ def _get_team_detections_and_categories(
     :param get_players_seperated_func: the function to get the 5 player images seperated
     :return: player detections and categories
     """
-    (player1_img, player2_img, player3_img, player4_img,
-     player5_img) = get_players_seperated_func(full_img,
+    (player1_img, player2_img, player3_img, player4_img, player5_img) = get_players_seperated_func(full_img,
                                                config.PLAYER_X_OFFSET,
-                                               config.PLAYER_HEIGTH,
+                                               config.PLAYER_HEIGHT,
                                                config.PLAYER_Y_OFFSET)
     player1_det, categories = _get_player_detections(player1_img)
     player2_det, _ = _get_player_detections(player2_img)
@@ -88,26 +87,31 @@ def _initialize_empty_team_data() -> Dict:
     """
     return {
         'player1': {
+            'weapon': None,
             'health_status': 1,
             'nades': [],
             'kevlar': None
         },
         'player2': {
+            'weapon': None,
             'health_status': 1,
             'nades': [],
             'kevlar': None
         },
         'player3': {
+            'weapon': None,
             'health_status': 1,
             'nades': [],
             'kevlar': None
         },
         'player4': {
+            'weapon': None,
             'health_status': 1,
             'nades': [],
             'kevlar': None
         },
         'player5': {
+            'weapon': None,
             'health_status': 1,
             'nades': [],
             'kevlar': None
