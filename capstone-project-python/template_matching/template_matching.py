@@ -1,8 +1,9 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
-from image_processor import getPlayerImagesRightSingle, getPlayerImagesLeftSingle
+from data_detection.image_processor import getPlayerImagesRightSeperated, getPlayerImagesLeftSeperated
 import config
+import matplotlib.pyplot as plt
 
 
 def upscale_with_aspect_ratio(img, upscale_factor):
@@ -152,10 +153,9 @@ def is_player_dead(img):
 
     return maxVal if maxVal >= threshold else 0
 
-
-getSingleImages = getPlayerImagesLeftSingle if config.is_team_left else getPlayerImagesRightSingle
-player1, player2, player3, player4, player5 = getSingleImages(
-    'test-screen_7.jpg', config.PLAYER_X_OFFSET, config.PLAYER_HEIGTH,
+getSingleImages = getPlayerImagesLeftSeperated if config.is_team_left else getPlayerImagesRightSeperated
+player1, player2, player3, player4, player5 = getPlayerImagesLeftSeperated(
+    '../helper_modules/test_images/test-screen_7.jpg', config.PLAYER_X_OFFSET, config.PLAYER_HEIGTH,
     config.PLAYER_Y_OFFSET)
 
 # for index, player in enumerate([player1, player2, player3, player4, player5]):

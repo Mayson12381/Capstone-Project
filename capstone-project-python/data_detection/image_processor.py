@@ -1,8 +1,7 @@
 import cv2
 
 
-def getPlayerImagesLeftSingle(image_path, baseX=420, playerHeight=53, width=450):
-    image = cv2.imread(image_path)
+def getPlayerImagesLeftSeperated(image, baseX=420, playerHeight=53, width=450):
     player1 = image[baseX:baseX + playerHeight, 0:width]
     player2 = image[baseX + playerHeight:baseX + 2 * playerHeight, 0:width]
     player3 = image[baseX + 2 * playerHeight:baseX + 3 * playerHeight, 0:width]
@@ -12,8 +11,7 @@ def getPlayerImagesLeftSingle(image_path, baseX=420, playerHeight=53, width=450)
     return (player1, player2, player3, player4, player5)
 
 
-def getPlayerImagesRightSingle(image_path, baseX=420, playerHeight=53, width=450):
-    image = cv2.imread(image_path)
+def getPlayerImagesRightSeperated(image, baseX=420, playerHeight=53, width=450):
     image_height, image_width, _ = image.shape
     player1 = image[baseX:baseX + playerHeight, image_width - width:image_width]
     player2 = image[baseX + playerHeight:baseX + 2 * playerHeight, image_width - width:image_width]
@@ -24,14 +22,10 @@ def getPlayerImagesRightSingle(image_path, baseX=420, playerHeight=53, width=450
     return (player1, player2, player3, player4, player5)
 
 
-def getPlayerImagesLeftFull(image_path, baseX=420, playerHeight=53, width=450):
-    image = cv2.imread(image_path)
-
+def getPlayerImagesLeftFull(image, baseX=420, playerHeight=53, width=450):
     return image[baseX:baseX + 5 * playerHeight, 0:width]
 
 
-def getPlayerImagesRightFull(image_path, baseX=420, playerHeight=53, width=450):
-    image = cv2.imread(image_path)
+def getPlayerImagesRightFull(image, baseX=420, playerHeight=53, width=450):
     image_height, image_width, _ = image.shape
-
     return image[baseX:baseX + 5 * playerHeight, image_width - width:image_width]

@@ -12,7 +12,7 @@ db = None
 
 def init_firebase():
     cred = credentials.Certificate(
-        './capstone-project-pweber-firebase-adminsdk-irp8n-a826099684.json')
+        './helper_modules/capstone-project-pweber-firebase-adminsdk-irp8n-a826099684.json')
     firebase_admin.initialize_app(cred)
 
     user_ref = get_user_reference()
