@@ -15,6 +15,7 @@ class MainFrame(tk.Frame):
         self.show_image_with_detections = show_image_with_detections
         self.status_login = StringVar()
         self.teamside = StringVar()
+        self.input_type = StringVar()
         tk.Frame.__init__(self, parent)
 
         parent.title("Companion")
@@ -36,8 +37,16 @@ class MainFrame(tk.Frame):
                                         padx=75,
                                         sticky="ew")
         self.teamside.set('Teamside - left' if config.is_team_left else 'Teamside - right')
+        Button(self,
+               textvariable=self.input_type,
+               command=self.switch_input_type).grid(row=4,
+                                        column=1,
+                                        pady=(10, 10),
+                                        padx=75,
+                                        sticky="ew")
+        self.input_type.set('Input type - ' + config.input_type)
         Button(self, text='Test Detection',
-               command=self.test_detection).grid(row=4,
+               command=self.test_detection).grid(row=5,
                                                  column=1,
                                                  pady=(10, 20),
                                                  padx=75,
@@ -49,6 +58,10 @@ class MainFrame(tk.Frame):
     def switch_teamside(self):
         config.is_team_left = not config.is_team_left
         self.teamside.set('Teamside - left' if config.is_team_left else 'Teamside - right')
+
+    def switch_input_type(self):
+        config.input_type = 'Stream' if config.input_type == 'Image' else 'Image'
+        self.input_type.set('Input type - ' + config.input_type)
 
     def test_detection(self):
         thread_thread = threading.Thread(

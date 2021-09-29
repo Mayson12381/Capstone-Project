@@ -15,6 +15,7 @@ from firebase_helpers.firebase_functions import (init_firebase,
                                                  update_game_data,
                                                  update_last_online)
 from gui.tkinter_frames import MainFrame
+from helper_modules.video_processor import read_image_from_video_stream
 
 
 def main_loop():
@@ -28,7 +29,7 @@ def main_loop():
             if config.is_game_data_requested:
                 config.is_game_data_requested = False
                 player_data = get_team_data_from_image(
-                    cv2.imread(config.TEST_IMAGE_PATH),
+                    cv2.imread(config.TEST_IMAGE_PATH) if config.input_type == 'Image' else read_image_from_video_stream(config.camera_input_id),
                     get_player_images_left
                     if config.is_team_left else get_player_images_right)
                 update_game_data(player_data)
