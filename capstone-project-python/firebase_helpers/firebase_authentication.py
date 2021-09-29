@@ -22,10 +22,11 @@ def sign_in_with_email_and_password(email: str,
 
 
 
-def login_user():
-    token = sign_in_with_email_and_password('dev@capstone.com', 'Passw0rd!')
+def login_user(user: str, password: str):
+    token = sign_in_with_email_and_password(user, password)
     try:
-        return token['registered']
+        token['registered']
+        return True
     except KeyError:
         return False
     return False
