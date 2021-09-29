@@ -58,7 +58,7 @@ class MainFrame(tk.Frame):
         thread_thread.start()
 
     def login(self):
-        user_authenticated = login_user()
+        user_authenticated = login_user('dev@capstone.com', 'Passw0rd!')
         config.is_user_logged_in = user_authenticated
         if user_authenticated:
             self.status_login.set("Online")
