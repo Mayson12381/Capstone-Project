@@ -21,24 +21,27 @@
   </BaseModal>
   <header class="bg-white shadow">
     <div class="flex">
-      <div class="w-1/2 ml-6 py-4 border-r border-gray-300">
+      <div class="w-full lg:w-1/2 ml-6 py-4 border-r border-gray-300">
         <h3 class="text-lg leading-6 font-medium text-gray-900">Prediction</h3>
       </div>
-      <div class="w-1/2 ml-6 py-4">
+      <div class="hidden lg:block lg:w-1/2 ml-6 py-4">
         <h3 class="text-lg leading-6 font-medium text-gray-900">Past Results</h3>
       </div>
     </div>
   </header>
   <main class="flex flex-col flex-auto">
-    <div class="flex flex-auto">
-      <div class="w-1/2 border-r border-gray-300 flex flex-col">
+    <div class="flex-col lg:flex-row flex flex-auto">
+      <div class="w-full lg:w-1/2 border-r border-gray-300 flex flex-col">
         <Prediction
           :companionStatus="companionStatus"
           @get-data="onClickGetData"
           @predict="onClickPredict"
         />
       </div>
-      <div class="w-1/2">
+      <div class="lg:hidden ml-6 py-4">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">Past Results</h3>
+      </div>
+      <div class="w-full lg:w-1/2">
         <PastResults />
       </div>
     </div>
@@ -49,7 +52,6 @@
 import { defineComponent } from 'vue'
 import PastResults from './PastResults'
 import Prediction from './Prediction'
-import firebase from 'firebase'
 import BaseModal from '@/components/BaseModal'
 import PredictionStats from './PredictionStats'
 
@@ -66,19 +68,6 @@ export default defineComponent({
       isPredictionLoading: false,
       prediction: { A: 0, B: 0 },
     }
-  },
-  created() {
-    const db = firebase.firestore()
-    let lastGameDataId = ''
-    db.collection('users')
-      .doc('dev')
-      .onSnapshot((doc: any) => {
-        if (lastGameDataId !== doc.data().last_game_data_id) {
-          console.log('new game data')
-          lastGameDataId = doc.data().last_game_data_id
-          this.$store.dispatch('fetchGameDataById', lastGameDataId)
-        }
-      })
   },
   mounted() {
     this.$store.dispatch('fetchPredictions')
@@ -103,7 +92,6 @@ export default defineComponent({
         userId: 'dev',
       })
       await this.$store.dispatch('fetchPredictions')
-      console.log(this.$store.getters.predictions)
       this.prediction = this.$store.getters.predictions.find(
         (prediction: any) => prediction.id === predictionID
       )

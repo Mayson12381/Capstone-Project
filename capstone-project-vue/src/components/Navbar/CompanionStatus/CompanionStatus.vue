@@ -8,7 +8,8 @@
       border border-gray-300
       px-3
       py-0.5
-      text-sm
+      text-xs
+      sm:text-sm
     "
   >
     <span class="absolute flex-shrink-0 flex items-center justify-center">
