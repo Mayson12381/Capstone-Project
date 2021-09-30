@@ -39,6 +39,7 @@ export default defineComponent({
       checked: this.startSelected,
     }
   },
+  emits: ['update'],
   methods: {
     onChange() {
       this.$emit('update', this.checked)

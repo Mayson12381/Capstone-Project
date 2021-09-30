@@ -1,5 +1,5 @@
 <template>
-  <Listbox as="div" value="options[selectedIndex]" @input="$emit('test', $event)">
+  <Listbox as="div" value="options[selectedIndex]">
     <ListboxLabel v-if="title" class="block text-sm font-medium text-gray-700">
       {{ title }}
     </ListboxLabel>

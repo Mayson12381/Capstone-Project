@@ -68,6 +68,8 @@
             text-gray-500
             uppercase
             tracking-wider
+            hidden
+            md:block
           "
         >
           Status
@@ -75,7 +77,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(player, index) in players" :key="player.name" class="bg-white">
+      <tr v-for="(player, index) in players" :key="index" class="bg-white">
         <td
           class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
           :class="{
@@ -83,7 +85,7 @@
             'text-green-600': player.health_status,
           }"
         >
-          Player {{ index + 1 }}
+          Player {{ index + player.health_status }}
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
           {{ player.weapon ? player.weapon : '-' }}
@@ -95,7 +97,7 @@
           {{ player.nades.length > 0 ? player.nades.join(', ') : '-' }}
         </td>
         <td
-          class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+          class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:block"
           :class="{
             'text-red-400': !player.health_status,
             'text-green-600': player.health_status,
@@ -124,14 +126,16 @@ export default defineComponent({
           this.$store.state.gameData.player5,
         ]
       } else {
-        return {
-          player1: {
-            health_status: 1,
-            nades: [],
-            kevlar: null,
-            weapon: '',
+        return [
+          {
+            player1: {
+              health_status: 1,
+              nades: [],
+              kevlar: null,
+              weapon: '',
+            },
           },
-        }
+        ]
       }
     },
   },

@@ -142,5 +142,6 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ['get-data', 'predict'],
 })
 </script>

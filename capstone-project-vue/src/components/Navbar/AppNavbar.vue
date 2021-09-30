@@ -3,22 +3,16 @@
     <div class="px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
-          <div class="flex-shrink-0">
+          <div class="hidden sm:block flex-shrink-0">
             <h2 class="text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate">
               CStrategy.ai
             </h2>
           </div>
-          <Tabs
-            :currentRoute="currentRoute"
-            :navigationItems="navigationItems"
-            @click-route="changeRoute"
-          />
+          <Tabs :currentRoute="currentRoute" :navigationItems="navigationItems" />
         </div>
-        <div class="hidden md:block">
-          <div class="flex items-center">
-            <CompanionStatus :status="companionStatus" />
-            <UserMenu v-if="$store.getters.getUser.id" />
-          </div>
+        <div class="flex items-center">
+          <CompanionStatus :status="companionStatus" />
+          <UserMenu v-if="$store.getters.getUser.id" />
         </div>
       </div>
     </div>

@@ -130,6 +130,7 @@ export default defineComponent({
       default: '',
     },
   },
+  emits: ['close'],
   setup() {
     const open = ref(true)
 
