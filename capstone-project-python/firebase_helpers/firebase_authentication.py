@@ -5,7 +5,7 @@ FIREBASE_WEB_API_KEY = f'AIzaSyC7pLo35rF3kV7v12MXjQ7GGK6gAJb7WsM'
 rest_api_url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword"
 
 
-def sign_in_with_email_and_password(email: str,
+def _sign_in_with_email_and_password(email: str,
                                     password: str,
                                     return_secure_token: bool = True):
     payload = json.dumps({
@@ -23,7 +23,7 @@ def sign_in_with_email_and_password(email: str,
 
 
 def login_user(user: str, password: str):
-    token = sign_in_with_email_and_password(user, password)
+    token = _sign_in_with_email_and_password(user, password)
     try:
         token['registered']
         return True
