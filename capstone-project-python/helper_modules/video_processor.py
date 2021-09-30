@@ -1,8 +1,7 @@
 import cv2
+from numpy import ndarray
 
-import cv2
-
-def read_image_from_video_stream(camera_id):
+def read_image_from_video_stream(camera_id: int) -> ndarray:
     """
     Reads an image from the video stream.
     :return: The image read from the video stream.
