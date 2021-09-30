@@ -1,6 +1,6 @@
 import unittest
 from firebase_helpers.firebase_functions import get_user_reference, init_firebase
-from firebase_helpers.firebase_authentication import sign_in_with_email_and_password, login_user
+from firebase_helpers.firebase_authentication import _sign_in_with_email_and_password, login_user
 from firebase_admin import firestore
 from typing import Dict
 
@@ -22,7 +22,7 @@ class TestFirebaseAuthentication(unittest.TestCase):
         """
         Test that the sign_in_with_email_and_password function returns a valid id and has correct type
         """
-        response = sign_in_with_email_and_password('dev@capstone.com',
+        response = _sign_in_with_email_and_password('dev@capstone.com',
                                                    'Passw0rd!')
         self.assertIsInstance(response, Dict)
         self.assertEqual(response['localId'], 'xfWy9Jk3J7PGc8AqYZXRBKSsghQ2')
