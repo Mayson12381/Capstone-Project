@@ -12,7 +12,3 @@ class TestVideoProcessor(unittest.TestCase):
         test_frame = read_image_from_video_stream(0)
         self.assertIsInstance(test_frame, ndarray)
         self.assertEqual(test_frame.shape, (1080, 1920, 3))
-
-
-if __name__ == '__main__':
-    unittest.main()

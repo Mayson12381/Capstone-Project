@@ -5,12 +5,18 @@ from firebase_admin import firestore
 from typing import Dict
 
 
-class TestFirebaseHelpers(unittest.TestCase):
+class TestFirebaseFunctions(unittest.TestCase):
+    def setUp(self):
+        try:
+            init_firebase()
+        except:
+            pass
+
     def test_get_user_reference(self):
         """
         Test that the get_user_reference function returns a valid reference
         """
-        user_reference = get_user_reference("test_user")
+        user_reference = get_user_reference()
         self.assertIsInstance(user_reference, firestore.DocumentReference)
         user_reference = get_user_reference()
         self.assertIsInstance(user_reference,
@@ -18,6 +24,12 @@ class TestFirebaseHelpers(unittest.TestCase):
 
 
 class TestFirebaseAuthentication(unittest.TestCase):
+    def setUp(self):
+        try:
+            init_firebase()
+        except:
+            pass
+
     def test_sign_in_with_email_and_password(self):
         """
         Test that the sign_in_with_email_and_password function returns a valid id and has correct type
@@ -47,8 +59,3 @@ class TestFirebaseAuthentication(unittest.TestCase):
         """
         response = login_user('dev@capstone.com', 'wrong')
         self.assertEqual(response, False)
-
-
-if __name__ == '__main__':
-    init_firebase()
-    unittest.main()

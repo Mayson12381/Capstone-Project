@@ -6,7 +6,3 @@ from gui.tkinter_frames import MainFrame
 class TestGui(unittest.TestCase):
     def test_gui(self):
         self.assertTrue(True)
-
-
-if __name__ == '__main__':
-    unittest.main()
