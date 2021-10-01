@@ -78,6 +78,8 @@ It is important to keep it running while a game is ongoing, since it takes care 
    py helper_modules\video_processor.py test_camera_id
    ```
 
+5. Add the firebase service account file to the *helper_modules* folder
+
 
 
 <!-- USAGE EXAMPLES -->

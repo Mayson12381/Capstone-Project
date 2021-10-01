@@ -18,8 +18,38 @@ This split was mainly done, so the players can focus on playing and the interact
 
 To set up both programs, please follow the instructions in each readme file in *capstone-project-vue* and *capstone-project-python* respectively.
 
+The webpage is also live at -> https://capstone-project-pweber.web.app/
+
 ## Demo
 
 To see a demo of the application, please visit the following link:
 
 * https://youtu.be/FQ8RAJkoHYQ
+
+## Contribution
+
+Since this is a Monorepo, we have some guidelines to achieve better structure and overview:
+
+### Branches
+
+Are always prefixed with either *comp* or *web* and usually have one of the following names:
+
+- feature/ - feature branch
+- test/ - test branch
+- fix/ fix branch
+
+### Commit Messages
+
+Follow the following pattern:
+
+[*package_name*] - *type*: *summary*]
+
+- package_name: Web (frontend), Comp (client-side preprocessor)
+- type: feat, fix, test, docs, refactor
+- summary in the present tense
+
+And messages are prefixed with git commit emojies from this list -> https://gist.github.com/parmentf/035de27d6ed1dce0b36a
+
+## Requirements and Validation
+
+My requirement list and Interview validation can be found in *requirements_and_validation.md*
