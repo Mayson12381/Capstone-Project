@@ -69,6 +69,9 @@ It is important to keep it running while a game is ongoing, since it takes care 
    ```sh
    pip install -r requirements.txt
    ```
+3. Setup OBS and virtualcam with this video
+
+* https://youtu.be/FQ8RAJkoHYQ
 
 
 
