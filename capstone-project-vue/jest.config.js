@@ -7,7 +7,9 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{js,vue,ts}',
     '!src/main.ts',
-    '!src/components/**/index.ts',
-    '!src/components/**/App*.vue',
+    '!src/**/index.ts',
+    '!src/**/App*.vue',
+    '!src/firebaseConfig.ts',
+    '!src/services/FirestoreService.ts',
   ],
 }

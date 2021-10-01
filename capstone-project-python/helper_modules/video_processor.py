@@ -20,7 +20,7 @@ def read_image_from_video_stream(camera_id: int) -> ndarray:
     return frame
 
 
-def test_camera_id() -> None:
+def test_camera_id() -> None: # pragma: no cover
     """
     Tests if the camera with the given id is connected.
     :param camera_id: The id of the camera to test.

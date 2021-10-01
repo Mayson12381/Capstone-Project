@@ -77,11 +77,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        v-for="(result, index) in $store.state.predictions"
-        :key="index"
-        class="bg-white"
-      >
+      <tr v-for="(result, index) in predictions" :key="index" class="bg-white">
         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
           {{ result.map.charAt(0).toUpperCase() + result.map.substring(1) }}
         </td>

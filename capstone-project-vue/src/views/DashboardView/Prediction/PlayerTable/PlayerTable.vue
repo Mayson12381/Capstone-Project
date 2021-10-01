@@ -163,28 +163,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'PlayerTable',
-  computed: {
-    players(): any {
-      if (this.$store.state.gameData) {
-        return [
-          this.$store.state.gameData.player1,
-          this.$store.state.gameData.player2,
-          this.$store.state.gameData.player3,
-          this.$store.state.gameData.player4,
-          this.$store.state.gameData.player5,
-        ]
-      } else {
-        return [
-          {
-            player1: {
-              health_status: 1,
-              nades: [],
-              kevlar: null,
-              weapon: '',
-            },
-          },
-        ]
-      }
+  props: {
+    players: {
+      type: Array,
+      required: true,
     },
   },
 })

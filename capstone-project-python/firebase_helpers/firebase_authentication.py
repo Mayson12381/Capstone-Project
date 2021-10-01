@@ -29,4 +29,3 @@ def login_user(user: str, password: str):
         return True
     except KeyError:
         return False
-    return False

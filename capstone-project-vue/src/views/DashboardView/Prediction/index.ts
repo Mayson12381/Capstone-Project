@@ -1,1 +1,1 @@
-export { default } from './Prediction.vue'
+export { default } from './AppPrediction.vue'
