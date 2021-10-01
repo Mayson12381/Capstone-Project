@@ -5,10 +5,11 @@ This project was created for the Capstone Project in conjunction with the Bachel
 
 The goal of this project is to provide the user with an interface to interact with the result of the Bachelor Thesis, which is a Machine Learning Algorithm to support Esports Teams with strategy success predictions to step up their game and focus more on playing instead of calculating odds.
 
-The product is seperated into two parts.
+The product is seperated into three parts.
 
 1. A Python script running on the computer of the player, that is capturing live gameplay to read game information and provide that data to a database for further processing.
 2. A Vue.js web application that displays captured data from the python client and allows further tweaking of input parameters of the ML algorithm and an overview of past results.
+3. A firebase backend that handles user authentication, api requests and the database
 
 This split was mainly done, so the players can focus on playing and the interaction with the ML algorithm can be done by someone other than the players.
 
