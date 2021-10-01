@@ -22,10 +22,12 @@
         aria-hidden="true"
       />
     </span>
-    <span v-if="status === 'online'" class="ml-3.5 font-medium text-white"
+    <span v-if="status === 'online'" class="ml-3.5 font-medium text-white text-center"
       >Companion Online</span
     >
-    <span v-else class="ml-3.5 font-medium text-white">Companion Offline</span>
+    <span v-else class="ml-3.5 font-medium text-white text-center"
+      >Companion Offline</span
+    >
   </div>
 </template>
 
