@@ -5,13 +5,30 @@
         <th
           scope="col"
           class="
-            px-6
-            py-3
+            sm:px-6 sm:py-3
+            p-2
             text-left text-xs
             font-medium
             text-gray-500
             uppercase
             tracking-wider
+            sm:hidden
+          "
+        >
+          Nr
+        </th>
+        <th
+          scope="col"
+          class="
+            sm:px-6 sm:py-3
+            p-2
+            text-left text-xs
+            font-medium
+            text-gray-500
+            uppercase
+            tracking-wider
+            hidden
+            sm:table-cell
           "
         >
           Player
@@ -19,8 +36,8 @@
         <th
           scope="col"
           class="
-            px-6
-            py-3
+            sm:px-6 sm:py-3
+            p-2
             text-left text-xs
             font-medium
             text-gray-500
@@ -33,8 +50,8 @@
         <th
           scope="col"
           class="
-            px-6
-            py-3
+            sm:px-6 sm:py-3
+            p-2
             text-left text-xs
             font-medium
             text-gray-500
@@ -47,8 +64,8 @@
         <th
           scope="col"
           class="
-            px-6
-            py-3
+            sm:px-6 sm:py-3
+            p-2
             text-left text-xs
             font-medium
             text-gray-500
@@ -61,8 +78,8 @@
         <th
           scope="col"
           class="
-            px-6
-            py-3
+            sm:px-6 sm:py-3
+            p-2
             text-left text-xs
             font-medium
             text-gray-500
@@ -79,25 +96,56 @@
     <tbody>
       <tr v-for="(player, index) in players" :key="index" class="bg-white">
         <td
-          class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
+          class="
+            sm:hidden sm:px-6 sm:py-4
+            p-2
+            whitespace-nowrap
+            text-sm
+            font-medium
+            text-gray-900
+          "
           :class="{
             'text-red-400': !player.health_status,
             'text-green-600': player.health_status,
           }"
         >
-          Player {{ index + player.health_status }}
+          {{ index + 1 }}
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td
+          class="
+            hidden
+            sm:table-cell sm:px-6 sm:py-4
+            p-2
+            whitespace-nowrap
+            text-sm
+            font-medium
+            text-gray-900
+          "
+          :class="{
+            'text-red-400': !player.health_status,
+            'text-green-600': player.health_status,
+          }"
+        >
+          Player {{ index + 1 }}
+        </td>
+        <td class="sm:px-6 sm:py-4 p-2 whitespace-nowrap text-sm text-gray-500">
           {{ player.weapon ? player.weapon : '-' }}
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td class="sm:px-6 sm:py-4 p-2 whitespace-nowrap text-sm text-gray-500">
           {{ player.kevlar ? player.kevlar : '-' }}
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td class="sm:px-6 sm:py-4 p-2 whitespace-nowrap text-sm text-gray-500">
           {{ player.nades.length > 0 ? player.nades.join(', ') : '-' }}
         </td>
         <td
-          class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:block"
+          class="
+            sm:px-6 sm:py-4
+            p-2
+            whitespace-nowrap
+            text-sm text-gray-500
+            hidden
+            md:block
+          "
           :class="{
             'text-red-400': !player.health_status,
             'text-green-600': player.health_status,
