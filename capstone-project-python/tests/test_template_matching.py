@@ -13,6 +13,10 @@ TEST_IMG = None
 
 
 class TestTemplateMatching(unittest.TestCase):
+    def setUp(self):
+        global TEST_IMG
+        TEST_IMG = cv2.imread('tests/test_images/test_image.jpg')
+
     def test_flip_image_horizontally(self):
         """
         Test if the image is flipped correctly and has correct dimensions and type
@@ -79,8 +83,3 @@ class TestTemplateMatching(unittest.TestCase):
         very_different_numbers = [140, 151, 182]
         max_difference = _max_diff(very_different_numbers)
         self.assertEqual(max_difference, 42)
-
-
-if __name__ == '__main__':
-    TEST_IMG = cv2.imread('tests/test_images/test_image.jpg')
-    unittest.main()

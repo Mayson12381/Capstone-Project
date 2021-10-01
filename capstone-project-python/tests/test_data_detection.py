@@ -22,6 +22,11 @@ TEST_IMG = None
 
 
 class TestDetections(unittest.TestCase):
+    def setUp(self):
+        config.model = load_model()
+        global TEST_IMG
+        TEST_IMG = cv2.imread(os.path.join('tests', 'test_images', 'test_image.jpg'))
+
     def test_get_player_detections(self):
         """
         Test if the player image detections is returning correct types and correct label map
@@ -73,7 +78,7 @@ class TestDetections(unittest.TestCase):
         self.assertEqual(team_data['player1']['weapon'], 'AWP')
         self.assertEqual(team_data['player1']['health_status'], 1)
         self.assertEqual(team_data['player1']['nades'], [])
-        self.assertEqual(team_data['player1']['kevlar'], None)
+        self.assertEqual(team_data['player1']['kevlar'], 'Helmet')
 
     def test_initialize_empty_team_data(self):
         """
@@ -83,10 +88,14 @@ class TestDetections(unittest.TestCase):
         self.assertEqual(team_data['player1']['weapon'], None)
         self.assertEqual(team_data['player1']['health_status'], 1)
         self.assertEqual(team_data['player1']['nades'], [])
-        self.assertEqual(team_data['player1']['kevlar'], None)
+        self.assertEqual(team_data['player1']['kevlar'], 'Helmet')
 
 
 class TestImageProcessor(unittest.TestCase):
+    def setUp(self):
+        config.model = load_model()
+        TEST_IMG = cv2.imread('tests/test_images/test_image.jpg')
+
     def test_get_team_image_right(self):
         """
         Test if the player images are returned in correct shape and correct type
@@ -130,9 +139,3 @@ class TestImageProcessor(unittest.TestCase):
         self.assertEqual(test_player_img.shape,
                          (config.PLAYER_HEIGHT, config.PLAYER_WIDTH, 3))
         self.assertIsInstance(test_player_img, ndarray)
-
-
-if __name__ == '__main__':
-    config.model = load_model()
-    TEST_IMG = cv2.imread('tests/test_images/test_image.jpg')
-    unittest.main()
