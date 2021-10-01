@@ -82,13 +82,6 @@ It is important to keep it running while a game is ongoing, since it takes care 
 
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-To have a practical tutorial on how to get the software up and running, I've recored a video outlining these steps ->
-
-
-
 <!-- TEST EXAMPLES -->
 ## Test
 
