@@ -1,6 +1,6 @@
 <template>
-  <div class="hidden md:block">
-    <div class="ml-10 flex items-baseline space-x-4">
+  <div class="">
+    <div class="sm:ml-10 flex items-baseline space-x-4">
       <template v-for="item in navigationItems" :key="item">
         <template v-if="currentRoute === item">
           <div
@@ -58,5 +58,6 @@ export default defineComponent({
       default: () => [],
     },
   },
+  emits: ['click-route'],
 })
 </script>

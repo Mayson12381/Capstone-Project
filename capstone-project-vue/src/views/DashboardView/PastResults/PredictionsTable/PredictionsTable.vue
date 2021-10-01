@@ -40,6 +40,8 @@
             text-gray-500
             uppercase
             tracking-wider
+            hidden
+            sm:table-cell
           "
         >
           Buy Type
@@ -54,6 +56,8 @@
             text-gray-500
             uppercase
             tracking-wider
+            hidden
+            md:table-cell
           "
         >
           Predicted On
@@ -90,10 +94,14 @@
             >{{ result.prediction.B }}%</span
           >
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td
+          class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden sm:table-cell"
+        >
           {{ result.round_type }}
         </td>
-        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td
+          class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 hidden md:table-cell"
+        >
           {{ result.predicted_on }}
         </td>
         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -123,5 +131,6 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ['delete-result'],
 })
 </script>

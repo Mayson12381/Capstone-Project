@@ -90,31 +90,31 @@ def _initialize_empty_team_data() -> Dict:
             'weapon': None,
             'health_status': 1,
             'nades': [],
-            'kevlar': None
+            'kevlar': 'Helmet'
         },
         'player2': {
             'weapon': None,
             'health_status': 1,
             'nades': [],
-            'kevlar': None
+            'kevlar': 'Helmet'
         },
         'player3': {
             'weapon': None,
             'health_status': 1,
             'nades': [],
-            'kevlar': None
+            'kevlar': 'Helmet'
         },
         'player4': {
             'weapon': None,
             'health_status': 1,
             'nades': [],
-            'kevlar': None
+            'kevlar': 'Helmet'
         },
         'player5': {
             'weapon': None,
             'health_status': 1,
             'nades': [],
-            'kevlar': None
+            'kevlar': 'Helmet'
         },
     }
 

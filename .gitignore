@@ -92,3 +92,9 @@ CapstoneProject.code-workspace
 .DS_Store
 
 capstone-project-python/__pycache__/
+
+*.pyc
+
+capstone-project-python/helper_modules/dataset_generator.py
+
+capstone-project-python/ml_model/cmd.txt

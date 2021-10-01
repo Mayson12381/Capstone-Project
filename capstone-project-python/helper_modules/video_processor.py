@@ -1,28 +1,19 @@
-# py main.py --image test-screen_1.png
-
 import cv2
-import argparse
+from numpy import ndarray
 
-ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--video", required = True, help = "Path to the video")
-args = vars(ap.parse_args())
-
-vidcap = cv2.VideoCapture(args["video"])
-vidcap.set(cv2.CAP_PROP_POS_MSEC, 0 * 1000)
-_, image = vidcap.read()
-
-baseX = 350
-playerHeight = 43
-
-player1 = image[baseX:baseX + playerHeight, 0:450]
-player2 = image[baseX + playerHeight:baseX + 2 * playerHeight, 0:450]
-player3 = image[baseX + 2 * playerHeight:baseX + 3 * playerHeight, 0:450]
-player4 = image[baseX + 3 * playerHeight:baseX + 4 * playerHeight, 0:450]
-player5 = image[baseX + 4 * playerHeight:baseX + 5 * playerHeight, 0:450]
-
-cv2.imshow("player1", player1)
-cv2.imshow("player2", player2)
-cv2.imshow("player3", player3)
-cv2.imshow("player4", player4)
-cv2.imshow("player5", player5)
-cv2.waitKey(0)
+def read_image_from_video_stream(camera_id: int) -> ndarray:
+    """
+    Reads an image from the video stream.
+    :return: The image read from the video stream.
+    """
+    cap = cv2.VideoCapture(camera_id)
+    cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
+    width = 1920
+    height = 1080
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+    if (cap.isOpened() == False):
+        print("Error opening video stream or file")
+    ret, frame = cap.read()
+    cap.release()
+    return frame

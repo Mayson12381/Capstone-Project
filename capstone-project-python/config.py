@@ -29,3 +29,5 @@ model = None
 is_game_data_requested = False
 is_user_logged_in = False
 is_team_left = False
+input_type = 'Image'
+camera_input_id = 1
