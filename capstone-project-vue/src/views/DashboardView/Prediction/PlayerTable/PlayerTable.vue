@@ -132,7 +132,7 @@
           {{ player.weapon ? player.weapon : '-' }}
         </td>
         <td class="sm:px-6 sm:py-4 p-2 whitespace-nowrap text-sm text-gray-500">
-          {{ player.kevlar ? player.kevlar : '-' }}
+          {{ player.kevlar && player.health_status ? player.kevlar : '-' }}
         </td>
         <td class="sm:px-6 sm:py-4 p-2 whitespace-nowrap text-sm text-gray-500">
           {{ player.nades.length > 0 ? player.nades.join(', ') : '-' }}

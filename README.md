@@ -16,3 +16,9 @@ This split was mainly done, so the players can focus on playing and the interact
 ## Getting Started
 
 To set up both programs, please follow the instructions in each readme file in *capstone-project-vue* and *capstone-project-python* respectively.
+
+## Demo
+
+To see a demo of the application, please visit the following link:
+
+* https://youtu.be/FQ8RAJkoHYQ
