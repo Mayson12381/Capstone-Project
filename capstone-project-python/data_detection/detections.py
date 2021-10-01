@@ -12,7 +12,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 # MARK: - Public functions
 
 
-def load_model() -> tf.keras.models.Model:
+def load_model() -> tf.keras.models.Model: # pragma: no cover
     """
     Loads the model from the config file
     :return: the model
@@ -22,7 +22,7 @@ def load_model() -> tf.keras.models.Model:
 
 
 def get_team_data_from_image(full_img: List,
-                             get_players_seperated_func: Callable) -> Dict:
+                             get_players_seperated_func: Callable) -> Dict: # pragma: no cover
     """
     Gets the team data from the image
     :param full_img: the fullscreen image
@@ -36,7 +36,7 @@ def get_team_data_from_image(full_img: List,
 
 def show_image_with_detections(full_img: List,
                                get_players_seperated_func: Callable,
-                               get_team_img_func: Callable) -> None:
+                               get_team_img_func: Callable) -> None: # pragma: no cover
     """
     Shows the image with the detections
     :param full_img: the fullscreen image

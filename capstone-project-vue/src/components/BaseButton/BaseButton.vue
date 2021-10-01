@@ -18,7 +18,7 @@
         variant == 'primary',
       'bg-white border-gray-300 text-gray-700 hover:bg-gray-50': variant == 'secondary',
     }"
-    @click.prevent.stop="$emits('on-click')"
+    @click.prevent.stop="$emit('on-click')"
   >
     {{ title }}
   </button>
@@ -42,5 +42,6 @@ export default defineComponent({
       },
     },
   },
+  emits: ['on-click'],
 })
 </script>

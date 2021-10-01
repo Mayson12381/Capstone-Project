@@ -104,7 +104,7 @@ def _how_likely_is_player_dead(img: np.ndarray, player: np.ndarray) -> float:
     return maxVal if maxVal >= threshold else 0
 
 
-def show_and_print_template_detections(image_path: str) -> None:
+def show_and_print_template_detections(image_path: str) -> None: # pragma: no cover
     """
     Main function.
     :param image_path: path to image
@@ -190,6 +190,6 @@ def show_and_print_template_detections(image_path: str) -> None:
     cv2.destroyAllWindows()
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': # pragma: no cover
     show_and_print_template_detections(
         '../helper_modules/test_images/test-screen_7.jpg')

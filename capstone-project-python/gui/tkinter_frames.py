@@ -7,7 +7,7 @@ import config
 from firebase_helpers.firebase_authentication import login_user
 
 
-class MainFrame(tk.Frame):
+class MainFrame(tk.Frame): # pragma: no cover
     def __init__(self, parent, getPlayersFull, getPlayersSingle,
                  show_image_with_detections):
         self.getPlayersFull = getPlayersFull

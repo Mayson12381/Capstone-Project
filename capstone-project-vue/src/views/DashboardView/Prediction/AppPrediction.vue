@@ -1,5 +1,5 @@
 <template>
-  <PlayerTable />
+  <PlayerTable :players="players" />
   <form class="flex flex-col flex-auto space-y-8 divide-y divide-gray-200 p-6">
     <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5 flex-auto">
       <div class="divide-y divide-gray-200 space-y-6 sm:space-y-5">
@@ -143,5 +143,29 @@ export default defineComponent({
     },
   },
   emits: ['get-data', 'predict'],
+  computed: {
+    players(): any {
+      if (this.$store.state.gameData) {
+        return [
+          this.$store.state.gameData.player1,
+          this.$store.state.gameData.player2,
+          this.$store.state.gameData.player3,
+          this.$store.state.gameData.player4,
+          this.$store.state.gameData.player5,
+        ]
+      } else {
+        return [
+          {
+            player1: {
+              health_status: 1,
+              nades: [],
+              kevlar: null,
+              weapon: '',
+            },
+          },
+        ]
+      }
+    },
+  },
 })
 </script>

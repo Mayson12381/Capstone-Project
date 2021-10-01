@@ -1,1 +1,1 @@
-export { default } from './PastResults.vue'
+export { default } from './AppPastResults.vue'

@@ -69,6 +69,14 @@ It is important to keep it running while a game is ongoing, since it takes care 
    ```sh
    pip install -r requirements.txt
    ```
+3. Setup OBS and virtualcam with this video
+
+* https://youtu.be/uMo2eyu5zk4
+
+4. Check the installation with the following command:
+   ```sh
+   py helper_modules\video_processor.py test_camera_id
+   ```
 
 
 
@@ -79,10 +87,28 @@ To have a practical tutorial on how to get the software up and running, I've rec
 
 
 
+<!-- TEST EXAMPLES -->
+## Test
+
+- Testing
+   ```sh
+   python -m unittest discover -s tests
+   ```
+
+- Testing with coverage
+   ```sh
+   coverage run -m unittest discover -s tests
+   ```
+
+- Viewing reports on coverage
+   ```sh
+   coverage report
+   ```
+
+
+
 <!-- CONTRIBUTING -->
 ## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch with the **'comp' prefix** (`git checkout -b comp/feature/new-feature`)

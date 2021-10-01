@@ -132,7 +132,7 @@
           {{ player.weapon ? player.weapon : '-' }}
         </td>
         <td class="sm:px-6 sm:py-4 p-2 whitespace-nowrap text-sm text-gray-500">
-          {{ player.kevlar ? player.kevlar : '-' }}
+          {{ player.kevlar && player.health_status ? player.kevlar : '-' }}
         </td>
         <td class="sm:px-6 sm:py-4 p-2 whitespace-nowrap text-sm text-gray-500">
           {{ player.nades.length > 0 ? player.nades.join(', ') : '-' }}
@@ -163,28 +163,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'PlayerTable',
-  computed: {
-    players(): any {
-      if (this.$store.state.gameData) {
-        return [
-          this.$store.state.gameData.player1,
-          this.$store.state.gameData.player2,
-          this.$store.state.gameData.player3,
-          this.$store.state.gameData.player4,
-          this.$store.state.gameData.player5,
-        ]
-      } else {
-        return [
-          {
-            player1: {
-              health_status: 1,
-              nades: [],
-              kevlar: null,
-              weapon: '',
-            },
-          },
-        ]
-      }
+  props: {
+    players: {
+      type: Array,
+      required: true,
     },
   },
 })

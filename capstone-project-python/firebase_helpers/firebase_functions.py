@@ -11,7 +11,7 @@ from proto.datetime_helpers import DatetimeWithNanoseconds
 db = None
 
 
-def init_firebase() -> None:
+def init_firebase() -> None: # pragma: no cover
     """
     Initialize firebase app
     :return: None
@@ -25,7 +25,7 @@ def init_firebase() -> None:
     user_watch = user_ref.on_snapshot(_on_snapshot)
 
 
-def update_last_online() -> None:
+def update_last_online() -> None: # pragma: no cover
     """
     Updates the last online time of the user on firestore
     :return: None
@@ -49,7 +49,7 @@ def get_user_reference() -> firestore.firestore.DocumentReference:
 
 
 def _on_snapshot(doc_snapshot: firestore.firestore.DocumentSnapshot,
-                 changes: List, read_time: DatetimeWithNanoseconds) -> None:
+                 changes: List, read_time: DatetimeWithNanoseconds) -> None: # pragma: no cover
     """
     Callback function for firestore user document snapshot
     :param doc_snapshot: firestore user document snapshot
@@ -63,7 +63,7 @@ def _on_snapshot(doc_snapshot: firestore.firestore.DocumentSnapshot,
             config.is_game_data_requested = True
 
 
-def update_game_data(player_data: Dict) -> None:
+def update_game_data(player_data: Dict) -> None: # pragma: no cover
     """
     Updates the game data on firestore
     :param player_data: player data
