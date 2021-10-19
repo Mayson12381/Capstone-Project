@@ -54,6 +54,7 @@ import PastResults from './PastResults'
 import Prediction from './Prediction'
 import BaseModal from '@/components/BaseModal'
 import PredictionStats from './PredictionStats'
+import firebase from 'firebase/app'
 
 export default defineComponent({
   components: {
@@ -70,7 +71,15 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.$store.dispatch('fetchPredictions')
+    firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(() => {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword('dev@capstone.com', 'Passw0rd!')
+          .then(() => this.$store.dispatch('fetchPredictions'))
+      })
   },
   computed: {
     companionStatus(): string {
